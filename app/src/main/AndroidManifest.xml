@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="org.grassel.huaweisdkfirstapp">
+
+
+<application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+        <activity android:name=".MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+    <meta-data
+        android:name="com.huawei.hms.client.appid" android:value="appid">
+        <!-- TODO Replace the value of appid with the actual app ID applied, sourced from Service Details, Huawei Developer.-->
+    </meta-data>
+
+        <activity
+            android:name="com.huawei.hms.activity.BridgeActivity"
+            android:configChanges="orientation|locale|screenSize|layoutDirection|fontScale"
+            android:excludeFromRecents="true"
+            android:exported="false"
+            android:hardwareAccelerated="true"
+            android:theme="@android:style/Theme.Translucent" >
+            <meta-data
+                android:name="hwc-theme"
+                android:value="androidhwext:style/Theme.Emui.Translucent" />
+        </activity>
+
+    <!--Replace xxx.xxx.xxx with the actual app package name.-->
+    <provider
+        android:name="com.huawei.hms.update.provider.UpdateProvider"
+        android:authorities="org.grassel.huaweisdkfirstapp.hms.update.provider"
+        android:exported="false"
+        android:grantUriPermissions="true" >
+       </provider>
+    </application>
+
+    <!--To upgrade HMS through HMS-SDK, OTA server access permission is required.-->
+    <uses-permission android:name="android.permission.INTERNET" />
+    <!--HMS upgrade through HMS-SDK. To save a downloaded upgrade package, SD card write permission is required.-->
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <!--Test network status-->
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+    <!--Test wifi status-->
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
+    <!--To get the IMEI, the unique user ID, from the user phone. -->
+    <uses-permission android:name="android.permission.READ_PHONE_STATE"/>
+
+</manifest>
